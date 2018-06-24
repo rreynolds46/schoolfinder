@@ -1,0 +1,48 @@
+{
+  "name": "schoolfinder",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bulma": "^0.7.1",
+    "bulma-extensions": "^1.1.0",
+    "bulma-slider": "^1.0.4",
+    "final-form": "^4.8.2",
+    "history": "^4.7.2",
+    "jwt-decode": "^2.2.0",
+    "normalize.css": "^8.0.0",
+    "prop-types": "^15.6.1",
+    "rc-slider": "^8.6.1",
+    "react": "^16.4.0",
+    "react-collapsible": "^2.2.0",
+    "react-dom": "^16.4.0",
+    "react-dropzone": "^4.2.11",
+    "react-final-form": "^3.6.2",
+    "react-pdf": "^3.0.5",
+    "react-pdf-js": "^4.0.0-alpha.6",
+    "react-redux": "^5.0.7",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-router-redux": "^5.0.0-alpha.9",
+    "react-scripts": "1.1.4",
+    "react-select": "^1.2.1",
+    "react-tabs": "^2.2.2",
+    "redux": "^4.0.0",
+    "redux-devtools-extension": "^2.13.2",
+    "redux-thunk": "^2.3.0"
+  },
+  "proxy": {
+    "/api/*": {
+      "target": "http://localhost:5000"
+    },
+    "/uploads/*": {
+      "target": "http://localhost:5000"
+    }
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
