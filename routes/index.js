@@ -29,7 +29,7 @@ const Transcript = require('../models/transcript');
 const Tests = require('../models/tests');
 const Essays = require('../models/essays');
 const StudentProfile = require('../models/studentProfile');
-
+const SchoolProfile = require('../models/schoolProfile');
 
 var db = mongoose.connection;
 
@@ -140,6 +140,26 @@ module.exports = function(passport){
 				.save();
 				res.redirect('back');
 		  });
+
+
+		/* HANDLE SCHOOL PROFILE */
+		/* School Profile GET */
+		router.get('/api/schools/:school', function(req, res) {
+			SchoolProfile.findOne({ schoolName: req.params.school }, (err, school) => {
+				if(err) throw err;
+				res.send(school);
+			})
+		})
+		
+		/* School Profile PUT */
+		router.put('/api/schools/:school', function(req, res) {
+			SchoolProfile.findOneAndUpdate({schoolName: req.params.school}, req.body, {upsert: true, new: true}).then(function(){
+                res.json({ successful: true })
+            })
+		})
+		
+
+
 
 
 

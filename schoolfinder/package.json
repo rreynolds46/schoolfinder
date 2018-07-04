@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@types/prop-types": "^15.5.3",
+    "@types/react-redux": "^6.0.3",
     "axios": "^0.18.0",
     "bulma": "^0.7.1",
     "bulma-extensions": "^1.1.0",

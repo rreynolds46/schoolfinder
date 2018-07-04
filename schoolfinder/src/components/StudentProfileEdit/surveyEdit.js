@@ -66,7 +66,41 @@ class EditSurvey extends Component {
             
                 );
                 } else {
-                    return '';
+                    return (
+                    
+                        <div className='container is-centered'>
+                            <form onSubmit={this.onSubmit}>
+                                <CustomizedSlider onChange={this.onChange.bind(this)} defaultValue={5} name='campusSetting' title='Ideal Campus Setting' minMark='Rural' midMark='Suburban' highMark='Urban' />
+                                <br/>
+                                <CustomizedSlider onChange={this.onChange.bind(this)} defaultValue={5} name='schoolSize' title='Ideal Campus Size' minMark='Very Small (<2000)' midMark='Average (10,000)' highMark='Very Large (>30,000)' />
+                                <br/>
+                                <CustomizedSlider onChange={this.onChange.bind(this)} defaultValue={5} name='reputation' title='Ideal School Reputation' minMark='Not prestigious' midMark='Prestigious' highMark='Extremely Prestigious' />
+                                <br/>   
+                                <CustomizedSlider onChange={this.onChange.bind(this)} defaultValue={5} name='diversity' title='Ideal School Diversity' minMark='Not Diverse' midMark='Diverse' highMark='Extremely Diverse' />
+                                <br/>       
+                                <CustomizedSlider onChange={this.onChange.bind(this)} defaultValue={5} name='classSize' title='Ideal Class Size' minMark='Very Small (<10 Students)' midMark='Average (30 Students)' highMark='Very Large (>60 Students)' />
+                                <br/>
+                                <CustomizedSlider onChange={this.onChange.bind(this)} defaultValue={5} name='homework' title='Ideal Academic Program' minMark='Not Rigorous' midMark='Rigorous' highMark='Extremely Rigorous' />
+                                <br/>   
+                                <CustomizedSlider onChange={this.onChange.bind(this)} defaultValue={5} name='courseRequirements' title='Ideal Course Schedule' minMark='Very Flexible' midMark='Somewhat Structured' highMark='Extremely Structured' />
+                                <br/>  
+                                <CustomizedSlider onChange={this.onChange.bind(this)} defaultValue={5} name='studyAbroad' title='Ideal Study Abroad Program' minMark='Not Encouraged' midMark='Encouraged' highMark='Extremely Encouraged' />
+                                <br/>  
+                                <CustomizedSlider onChange={this.onChange.bind(this)} defaultValue={5} name='campusHousing' title='Ideal Campus Housing' minMark='Mostly Off-Campus' midMark='Mix of On and Off-Campus' highMark='Mostly On-Campus' />
+                                <br/>
+                                <CustomizedSlider onChange={this.onChange.bind(this)} defaultValue={5} name='greekLife' title='Ideal Campus Greek Life' minMark='Nonexistent' midMark='Average' highMark='Large Part of Culture' />
+                                <br/> 
+                                <CustomizedSlider onChange={this.onChange.bind(this)} defaultValue={5} name='sports' title='Ideal School Sports' minMark='Nonexistent' midMark='Average' highMark='Large Part of Culture' />
+                                <br/>  
+                                <CustomizedSlider onChange={this.onChange.bind(this)} defaultValue={5} name='arts' title='Ideal School Arts' minMark='Nonexistent' midMark='Average' highMark='Large Part of Culture' />
+                                <br/>      
+                                <div className="control">
+                                    <button type='submit' className="button is-primary">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+            
+                );
                 }
                 
         }

@@ -8,7 +8,7 @@ class Register extends Component {
             username: '',
             password: '',
             passwordConfirmation: '',
-            grouping: ''
+            grouping: 'student'
         }
         this.onSubmit = this.onSubmit.bind(this);
     }
@@ -49,18 +49,7 @@ class Register extends Component {
                             placeholder="Password" />
                         </div>
                     </div>
-                    <div className="field">
-                        <div className="control is-expanded">
-                            <div className="select is-fullwidth">
-                            <select name='grouping' value={this.state.grouping} onChange={this.onChange.bind(this)}>
-                                <option value="" selected disabled hidden>Select Account Type</option>
-                                <option value='student'>Student</option>
-                                <option value='teacher'>Teacher</option>
-                                <option value='adviser'>Adviser</option>
-                            </select>
-                            </div>
-                        </div>
-                    </div>
+
                     <div className="control">
                         <button type='submit' className="button is-primary">Submit</button>
                     </div>
