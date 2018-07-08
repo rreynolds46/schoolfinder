@@ -2,6 +2,8 @@ var mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const TestSchema = new Schema({
+    type: { type: String, default: "tests"},
+
     _user: { type: Schema.Types.ObjectId, ref: 'User' },
     APresearch: Number,
     APseminar: Number,

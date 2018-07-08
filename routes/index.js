@@ -52,7 +52,7 @@ module.exports = function(passport){
 		/* STUDENT PROFILE INDEX */
 		/* GET Student Profile Index */
 		router.get('/api/users/:userID', function(req, res) {
-			StudentProfile.findOne({ _user: req.params.userID }, (err, user) => {
+			Users.findOne({ _id: req.params.userID }, (err, user) => {
 				if(err) throw err;
 				res.send(user);
 			})
@@ -61,9 +61,10 @@ module.exports = function(passport){
 		/* STUDENT PROFILE */
 		/* POST Student Profile */
 		router.put('/api/studentprofile/:userID', function(req, res, next) {
-			StudentProfile.findOneAndUpdate({_user: req.params.userID}, req.body, {upsert: true, new: true}).then(function(){
-                res.json({ successful: true })
-            })
+			console.log(req.body);
+			Users.findOneAndUpdate({_id: req.params.userID}, req.body, {upsert: true, new: true}).then(function(){
+				res.json({ successful: true })
+			})
 		})
 		
 		/* GET Student Surveys */
@@ -78,9 +79,9 @@ module.exports = function(passport){
 		/* STUDENT SURVEYS */
 		/* POST Student Surveys */
 		router.put('/api/surveys/:userID', function(req, res) {
-			Surveys.findOneAndUpdate({_user: req.params.userID}, req.body, {upsert: true, new: true}).then(function(){
-                res.json({ successful: true })
-            })
+			Users.findOneAndUpdate({_id: req.params.userID}, req.body, {upsert: true, new: true}).then(function(){
+				res.json({ successful: true })
+			})
 		})
 		
 		/* GET Student Surveys */
@@ -103,9 +104,9 @@ module.exports = function(passport){
 
 		/* POST Student Tests */
 		router.put('/api/tests/:userID', function(req, res) {
-			Tests.findOneAndUpdate({_user: req.params.userID}, req.body, {upsert: true, new: true}).then(function(){
-                res.json({ successful: true })
-            })
+			Users.findOneAndUpdate({_id: req.params.userID}, req.body, {upsert: true, new: true}).then(function(){
+				res.json({ successful: true })
+			})
 		})
 
 		/* STUDENT Essays */
@@ -120,10 +121,9 @@ module.exports = function(passport){
 
 		/* POST Student Essays */
 		router.put('/api/essays/:userID', function(req, res) {
-			console.log(req.params.userID);
-			Essays.findOneAndUpdate({_user: req.params.userID}, req.body, {upsert: true, new: true}).then(function(){
-                res.json({ successful: true })
-            })
+			Users.findOneAndUpdate({_id: req.params.userID}, req.body, {upsert: true, new: true}).then(function(){
+				res.json({ successful: true })
+			})
 		})
 
 		
@@ -159,6 +159,13 @@ module.exports = function(passport){
 		})
 		
 
+		/* STUDENT SEARCH */
+		router.get('/api/students/search', function(req, res) {
+			Users.find({}, function(err, users) {
+				res.send(users);
+			})
+		})	
+
 
 
 
@@ -179,7 +186,7 @@ module.exports = function(passport){
 
 		/* Handle Registration POST */
 		router.post('/api/users', passport.authenticate('signup', function(req, res) {
-			res.json({successful: true})
+			console.log(res);
 		}));
 
 		/* GET Current User */

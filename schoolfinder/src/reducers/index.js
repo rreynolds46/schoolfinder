@@ -6,6 +6,7 @@ import studentSurveyReducer from './studentSurveyReducer';
 import studentTestReducer from './studentTestReducer';
 import studentEssayReducer from './studentEssayReducer';
 import collegeProfileReducer from './school/profileReducer';
+import studentSearchReducer from './studentSearchReducer';
 
 export default combineReducers({
     auth: authReducer,
@@ -14,5 +15,6 @@ export default combineReducers({
     survey: studentSurveyReducer,
     essay: studentEssayReducer,
     test: studentTestReducer,
-    college: collegeProfileReducer
+    college: collegeProfileReducer,
+    studentList: studentSearchReducer
 });

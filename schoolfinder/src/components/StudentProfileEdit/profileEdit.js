@@ -13,7 +13,6 @@ class EditProfile extends Component {
 
     constructor(props) {
         super(props);
-        console.log(this.props);
 
         this.state = {
             _user: this.props.match.params.userID,
@@ -43,7 +42,6 @@ class EditProfile extends Component {
                 return '';
             default:
                 const profileDone = this.props.student;
-                console.log(profileDone);
                 if(profileDone._id) {
                     const { student } = this.props;
                     return (
@@ -53,13 +51,13 @@ class EditProfile extends Component {
                                     <div className="field column is-one-quarter is-centered">
                                         <label className="label">Name</label>
                                         <div className="control">
-                                            <input defaultValue={student.name} onChange={this.onChange.bind(this)} name='name' className="input" type="text"  />
+                                            <input defaultValue={student.studentprofile.name} onChange={this.onChange.bind(this)} name='studentprofile.name' className="input" type="text"  />
                                         </div>
                                     </div>
                                     <div className="field column is-one-quarter is-centered">
                                         <label className="label">High School</label>
                                         <div className="control">
-                                            <input defaultValue={student.highSchool} onChange={this.onChange.bind(this)} name='highSchool' className="input" type="text"  />
+                                            <input defaultValue={student.studentprofile.highSchool} onChange={this.onChange.bind(this)} name='studentprofile.highSchool' className="input" type="text"  />
                                         </div>
                                     </div>
                                 </div>
@@ -67,13 +65,13 @@ class EditProfile extends Component {
                                     <div className="field column is-one-quarter is-centered">
                                         <label className="label">GPA</label>
                                         <div className="control">
-                                            <input defaultValue={student.gpa} onChange={this.onChange.bind(this)} min={0} name='gpa' className="input" step={.01} type="number"  />
+                                            <input defaultValue={student.studentprofile.gpa} onChange={this.onChange.bind(this)} min={0} name='studentprofile.gpa' className="input" step={.01} type="number"  />
                                         </div>
                                     </div>
                                     <div className="field column is-one-quarter is-centered">
                                         <label className="label">Hometown</label>
                                         <div className="control">
-                                            <input defaultValue={student.hometown} onChange={this.onChange.bind(this)} name='hometown' className="input" type="text"  />
+                                            <input defaultValue={student.studentprofile.hometown} onChange={this.onChange.bind(this)} name='studentprofile.hometown' className="input" type="text"  />
                                         </div>
                                     </div>
                                 </div>
@@ -81,17 +79,17 @@ class EditProfile extends Component {
                                 <section className='container column is-three-fifths'> 
                                     <Collapsible trigger="Biography">
                                                 <div className='entryDiv container'>
-                                                    <textarea defaultValue={student.biography} onChange={this.onChange.bind(this)} name='biography' className="textarea" rows="10"></textarea>
+                                                    <textarea defaultValue={student.studentprofile.biography} onChange={this.onChange.bind(this)} name='studentprofile.biography' className="textarea" rows="10"></textarea>
                                                 </div>                 
                                     </Collapsible>
                                     <Collapsible trigger="Extracurriculars">
                                                 <div className='entryDiv container'>
-                                                    <textarea defaultValue={student.extracurricular} onChange={this.onChange.bind(this)} name='extracurricular' className="textarea" rows="10"></textarea>
+                                                    <textarea defaultValue={student.studentprofile.extracurricular} onChange={this.onChange.bind(this)} name='studentprofile.extracurricular' className="textarea" rows="10"></textarea>
                                                 </div>                 
                                     </Collapsible>
                                     <Collapsible trigger="Awards">
                                                 <div className='entryDiv container'>
-                                                    <textarea defaultValue={student.awards} onChange={this.onChange.bind(this)} name='awards' className="textarea" rows="10"></textarea>
+                                                    <textarea defaultValue={student.studentprofile.awards} onChange={this.onChange.bind(this)} name='studentprofile.awards' className="textarea" rows="10"></textarea>
                                                 </div>                 
                                     </Collapsible>
                                 </section>
@@ -111,13 +109,13 @@ class EditProfile extends Component {
                                     <div className="field column is-one-quarter is-centered">
                                         <label className="label">Name</label>
                                         <div className="control">
-                                            <input onChange={this.onChange.bind(this)} name='name' className="input" type="text"  />
+                                            <input onChange={this.onChange.bind(this)} name='studentprofile.name' className="input" type="text"  />
                                         </div>
                                     </div>
                                     <div className="field column is-one-quarter is-centered">
                                         <label className="label">High School</label>
                                         <div className="control">
-                                            <input onChange={this.onChange.bind(this)} name='highSchool' className="input" type="text"  />
+                                            <input onChange={this.onChange.bind(this)} name='studentprofile.highSchool' className="input" type="text"  />
                                         </div>
                                     </div>
                                 </div>
@@ -125,13 +123,13 @@ class EditProfile extends Component {
                                     <div className="field column is-one-quarter is-centered">
                                         <label className="label">GPA</label>
                                         <div className="control">
-                                            <input onChange={this.onChange.bind(this)} min={0} name='gpa' className="input" step={.01} type="number"  />
+                                            <input onChange={this.onChange.bind(this)} min={0} name='studentprofile.gpa' className="input" step={.01} type="number"  />
                                         </div>
                                     </div>
                                     <div className="field column is-one-quarter is-centered">
                                         <label className="label">Hometown</label>
                                         <div className="control">
-                                            <input onChange={this.onChange.bind(this)} name='hometown' className="input" type="text"  />
+                                            <input onChange={this.onChange.bind(this)} name='studentprofile.hometown' className="input" type="text"  />
                                         </div>
                                     </div>
                                 </div>
@@ -139,17 +137,17 @@ class EditProfile extends Component {
                                 <section className='container column is-three-fifths'> 
                                     <Collapsible trigger="Biography">
                                                 <div className='entryDiv container'>
-                                                    <textarea onChange={this.onChange.bind(this)} name='biography' className="textarea" rows="10"></textarea>
+                                                    <textarea onChange={this.onChange.bind(this)} name='studentprofile.biography' className="textarea" rows="10"></textarea>
                                                 </div>                 
                                     </Collapsible>
                                     <Collapsible trigger="Extracurriculars">
                                                 <div className='entryDiv container'>
-                                                    <textarea onChange={this.onChange.bind(this)} name='extracurricular' className="textarea" rows="10"></textarea>
+                                                    <textarea onChange={this.onChange.bind(this)} name='studentprofile.extracurricular' className="textarea" rows="10"></textarea>
                                                 </div>                 
                                     </Collapsible>
                                     <Collapsible trigger="Awards">
                                                 <div className='entryDiv container'>
-                                                    <textarea onChange={this.onChange.bind(this)} name='awards' className="textarea" rows="10"></textarea>
+                                                    <textarea onChange={this.onChange.bind(this)} name='studentprofile.awards' className="textarea" rows="10"></textarea>
                                                 </div>                 
                                     </Collapsible>
                                 </section>

@@ -11,6 +11,7 @@ export * from './essayEdit';
 export * from './studentEssays';
 export * from './profileEdit';
 export * from './studentTranscript';
+export * from './getStudents';
 
 /* School Actions */
 export * from './school/profileEdit';

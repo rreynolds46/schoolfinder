@@ -7,7 +7,7 @@ import './testEdit.css';
 class EditTest extends Component {
     componentDidMount = () => {
         const userID = this.props.match.params.userID;
-        this.props.getStudentTest(userID);
+        this.props.getUserProfile(userID);
         
     }
 
@@ -34,15 +34,15 @@ class EditTest extends Component {
     }
 
     renderContent() {
-        switch(this.props.tests) {
+        switch(this.props.student) {
             case null:
                 return '';
             case false: 
                 return '';
             default:
-                const testDone = this.props.test;
-                if(testDone._id) {
-                    const { test } = this.props;
+                const profileDone = this.props.student;
+                if(profileDone._id) {
+                    const { student } = this.props;
                     return (
                     <section className='container column is-three-fifths'> 
                     <form onSubmit={this.onSubmit}>
@@ -52,13 +52,13 @@ class EditTest extends Component {
                                     <div className="field is-three-fifths column">
                                         <label className="label">AP Research</label>
                                         <div className="control">
-                                            <input defaultValue={test.APresearch} onChange={this.onChange.bind(this)} name='APresearch' className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                            <input defaultValue={student.tests.APresearch} onChange={this.onChange.bind(this)} name='tests.APresearch' className="input" type="number" placeholder="Score" min="0" max="5"/>
                                         </div>
                                     </div>
                                     <div className="field column is-three-fifths">
                                         <label className="label">AP Seminar</label>
                                         <div className="control">
-                                            <input defaultValue={test.APseminar}  name='APseminar' onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                            <input defaultValue={student.tests.APseminar}  name='tests.APseminar' onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                         </div>
                                     </div>
                                 </div>
@@ -70,31 +70,31 @@ class EditTest extends Component {
                                     <div className="field column is-two-fifths">
                                         <label className="label">Art History</label>
                                         <div className="control">
-                                            <input name='AParthistory' defaultValue={test.AParthistory} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                            <input name='tests.AParthistory' defaultValue={student.tests.AParthistory} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                         </div>
                                     </div>
                                     <div className="field column is-two-fifths">
                                         <label className="label">Studio Art 2-D</label>
                                         <div className="control">
-                                            <input name='APstudioart2d' defaultValue={test.APstudioart2d} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                            <input name='tests.APstudioart2d' defaultValue={student.tests.APstudioart2d} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                         </div>
                                     </div>
                                     <div className="field column is-two-fifths">
                                         <label className="label">Studio Art 3-D</label>
                                         <div className="control">
-                                            <input name='APstudioart3d' defaultValue={test.APstudioart3d} onChange={this.onChange.bind(this)}  className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                            <input name='tests.APstudioart3d' defaultValue={student.tests.APstudioart3d} onChange={this.onChange.bind(this)}  className="input" type="number" placeholder="Score" min="0" max="5"/>
                                         </div>
                                     </div>
                                     <div className="field column is-two-fifths">
                                         <label className="label">Studio Art Drawing</label>
                                         <div className="control">
-                                            <input name='APstudioartdrawing' defaultValue={test.APstudioartdrawing} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                            <input name='tests.APstudioartdrawing' defaultValue={student.tests.APstudioartdrawing} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                         </div>
                                     </div>
                                     <div className="field column is-two-fifths">
                                         <label className="label">Music</label>
                                         <div className="control">
-                                            <input name='APmusic' defaultValue={test.APmusic} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                            <input name='tests.APmusic' defaultValue={student.tests.APmusic} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                         </div>
                                     </div>
                                 </div>
@@ -106,13 +106,13 @@ class EditTest extends Component {
                                     <div className="field is-three-fifths column">
                                         <label className="label">English Language</label>
                                         <div className="control">
-                                            <input name='APenglishlang'  defaultValue={test.APenglishlang} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                            <input name='tests.APenglishlang'  defaultValue={student.tests.APenglishlang} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                         </div>
                                     </div>
                                     <div className="field column is-three-fifths">
                                         <label className="label">English Literature</label>
                                         <div className="control">
-                                            <input name='APenglishlit' defaultValue={test.APenglishlit} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                            <input name='tests.APenglishlit' defaultValue={student.tests.APenglishlit} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                         </div>
                                     </div>
                                 </div>
@@ -124,55 +124,55 @@ class EditTest extends Component {
                                     <div className="field column is-two-fifths">
                                             <label className="label">Comparative Government</label>
                                             <div className="control">
-                                                <input name='APcomparativegov' defaultValue={test.APcomparativegov} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                <input name='tests.APcomparativegov' defaultValue={student.tests.APcomparativegov} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                             </div>
                                         </div>
                                         <div className="field column is-two-fifths">
                                             <label className="label">European History</label>
                                             <div className="control">
-                                                <input name='APeuro' defaultValue={test.APeuro} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                <input name='tests.APeuro' defaultValue={student.tests.APeuro} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                             </div>
                                         </div>                       
                                         <div className="field column is-two-fifths">
                                             <label className="label">Georgraphy</label>
                                             <div className="control">
-                                                <input name='APgeography' defaultValue={test.APgeography} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                <input name='tests.APgeography' defaultValue={student.tests.APgeography} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                             </div>
                                         </div>
                                         <div className="field column is-two-fifths">
                                             <label className="label">Macroeconomics</label>
                                             <div className="control">
-                                                <input name='APmacro' defaultValue={test.APmacro} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                <input name='tests.APmacro' defaultValue={student.tests.APmacro} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                             </div>
                                         </div>                        
                                         <div className="field column is-two-fifths">
                                             <label className="label">Microeconomics</label>
                                             <div className="control">
-                                                <input name='APmicro' defaultValue={test.APmicro} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                <input name='tests.APmicro' defaultValue={student.tests.APmicro} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                             </div>
                                         </div>
                                         <div className="field column is-two-fifths">
                                             <label className="label">Psychology</label>
                                             <div className="control">
-                                                <input name='APpsych' defaultValue={test.APpsych} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                <input name='tests.APpsych' defaultValue={student.tests.APpsych} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                             </div>
                                         </div>                        
                                         <div className="field column is-two-fifths">
                                             <label className="label">US Government</label>
                                             <div className="control">
-                                                <input name='APusgov' defaultValue={test.APusgov} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                <input name='tests.APusgov' defaultValue={student.tests.APusgov} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                             </div>
                                         </div>
                                         <div className="field column is-two-fifths">
                                             <label className="label">US History</label>
                                             <div className="control">
-                                                <input name='APushistory' defaultValue={test.APushistory} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                <input name='tests.APushistory' defaultValue={student.tests.APushistory} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                             </div>
                                         </div>
                                         <div className="field column is-two-fifths">
                                             <label className="label">World History</label>
                                             <div className="control">
-                                                <input name='APworldhistory' defaultValue={test.APworldhistory} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                <input name='tests.APworldhistory' defaultValue={student.tests.APworldhistory} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                             </div>
                                         </div>
                                     </div>
@@ -184,31 +184,31 @@ class EditTest extends Component {
                                     <div className="field column is-two-fifths">
                                         <label className="label">Calculus AB</label>
                                         <div className="control">
-                                            <input name='APcalcAB' defaultValue={test.APcalcAB} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                            <input name='tests.APcalcAB' defaultValue={student.tests.APcalcAB} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                         </div>
                                     </div>
                                     <div className="field column is-two-fifths">
                                         <label className="label">Calculus BC</label>
                                         <div className="control">
-                                            <input name='APcalcBC' defaultValue={test.APcalcBC} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                            <input name='tests.APcalcBC' defaultValue={student.tests.APcalcBC} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                         </div>
                                     </div>
                                     <div className="field column is-two-fifths">
                                         <label className="label">Computer Science A</label>
                                         <div className="control">
-                                            <input name='APcompsciA' defaultValue={test.APcompsciA} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                            <input name='tests.APcompsciA' defaultValue={student.tests.APcompsciA} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                         </div>
                                     </div>
                                     <div className="field column is-two-fifths">
                                         <label className="label">Computer Science P</label>
                                         <div className="control">
-                                            <input name='APcompsciP' defaultValue={test.APcompsciP} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                            <input name='tests.APcompsciP' defaultValue={student.tests.APcompsciP} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                         </div>
                                     </div>
                                     <div className="field column is-two-fifths">
                                         <label className="label">Statistics</label>
                                         <div className="control">
-                                            <input name='APstat' defaultValue={test.APstat} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                            <input name='tests.APstat' defaultValue={student.tests.APstat} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                         </div>
                                     </div>
                                 </div>
@@ -220,43 +220,43 @@ class EditTest extends Component {
                                     <div className="field column is-two-fifths">
                                         <label className="label">Biology</label>
                                         <div className="control">
-                                            <input name='APbio' defaultValue={test.APbio} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                            <input name='tests.APbio' defaultValue={student.tests.APbio} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                         </div>
                                     </div>
                                     <div className="field column is-two-fifths">
                                         <label className="label">Chemistry</label>
                                         <div className="control">
-                                            <input name='APchem' defaultValue={test.APchem} onChange={this.onChange.bind(this)}  className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                            <input name='tests.APchem' defaultValue={student.tests.APchem} onChange={this.onChange.bind(this)}  className="input" type="number" placeholder="Score" min="0" max="5"/>
                                         </div>
                                     </div>
                                     <div className="field column is-two-fifths">
                                         <label className="label">Environmental Sciences</label>
                                         <div className="control">
-                                            <input name='APenvironment' defaultValue={test.APenvironment} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                            <input name='tests.APenvironment' defaultValue={student.tests.APenvironment} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                         </div>
                                     </div>
                                     <div className="field column is-two-fifths">
                                         <label className="label">Physics Electricity</label>
                                         <div className="control">
-                                            <input name='APphysicsElect' defaultValue={test.APphysicsElect} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                            <input name='tests.APphysicsElect' defaultValue={student.tests.APphysicsElect} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                         </div>
                                     </div>
                                     <div className="field column is-two-fifths">
                                         <label className="label">Physics Mechanical</label>
                                         <div className="control">
-                                            <input name='APphysicsMech' defaultValue={test.APphysicsMech} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                            <input name='tests.APphysicsMech' defaultValue={student.tests.APphysicsMech} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                         </div>
                                     </div>
                                     <div className="field column is-two-fifths">
                                         <label className="label">Physics 1</label>
                                         <div className="control">
-                                            <input name='APphysics1' defaultValue={test.APphysics1} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                            <input name='tests.APphysics1' defaultValue={student.tests.APphysics1} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                         </div>
                                     </div>
                                     <div className="field column is-two-fifths">
                                         <label className="label">Physics 2</label>
                                         <div className="control">
-                                            <input name='APphysics2' defaultValue={test.APphysics2} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                            <input name='tests.APphysics2' defaultValue={student.tests.APphysics2} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                         </div>
                                     </div>
                                 </div>
@@ -268,49 +268,49 @@ class EditTest extends Component {
                                     <div className="field column is-two-fifths">
                                         <label className="label">Chinese</label>
                                         <div className="control">
-                                            <input name='APchinese' defaultValue={test.APchinese} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                            <input name='tests.APchinese' defaultValue={student.tests.APchinese} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                         </div>
                                     </div>
                                     <div className="field column is-two-fifths">
                                         <label className="label">French</label>
                                         <div className="control">
-                                            <input name='APfrench' defaultValue={test.APfrench} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                            <input name='tests.APfrench' defaultValue={student.tests.APfrench} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                         </div>
                                     </div>
                                     <div className="field column is-two-fifths">
                                         <label className="label">German</label>
                                         <div className="control">
-                                            <input name='APgerman' defaultValue={test.APgerman} onChange={this.onChange.bind(this)}  className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                            <input name='tests.APgerman' defaultValue={student.tests.APgerman} onChange={this.onChange.bind(this)}  className="input" type="number" placeholder="Score" min="0" max="5"/>
                                         </div>
                                     </div>
                                     <div className="field column is-two-fifths">
                                         <label className="label">Italian</label>
                                         <div className="control">
-                                            <input name='APitalian' defaultValue={test.APitalian} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                            <input name='tests.APitalian' defaultValue={student.tests.APitalian} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                         </div>
                                     </div>
                                     <div className="field column is-two-fifths">
                                         <label className="label">Japanese</label>
                                         <div className="control">
-                                            <input name='APjapanese' defaultValue={test.APjapanese} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                            <input name='tests.APjapanese' defaultValue={student.tests.APjapanese} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                         </div>
                                     </div>
                                     <div className="field column is-two-fifths">
                                         <label className="label">Latin</label>
                                         <div className="control">
-                                            <input name='APlatin' defaultValue={test.APlatin} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                            <input name='tests.APlatin' defaultValue={student.tests.APlatin} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                         </div>
                                     </div>
                                     <div className="field column is-two-fifths">
                                         <label className="label">Spanish Language</label>
                                         <div className="control">
-                                            <input name='APspanishlang' defaultValue={test.APspanishlang} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                            <input name='tests.APspanishlang' defaultValue={student.tests.APspanishlang} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                         </div>
                                     </div>
                                     <div className="field column is-two-fifths">
                                         <label className="label">Spanish Language</label>
                                         <div className="control">
-                                            <input name='APspanishlit' defaultValue={test.APspanishlit} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                            <input name='tests.APspanishlit' defaultValue={student.tests.APspanishlit} onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                         </div>
                                     </div>  
                                 </div>
@@ -332,13 +332,13 @@ class EditTest extends Component {
                                         <div className="field is-three-fifths column">
                                             <label className="label">AP Research</label>
                                             <div className="control">
-                                                <input  onChange={this.onChange.bind(this)} name='APresearch' className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                <input  onChange={this.onChange.bind(this)} name='tests.APresearch' className="input" type="number" placeholder="Score" min="0" max="5"/>
                                             </div>
                                         </div>
                                         <div className="field column is-three-fifths">
                                             <label className="label">AP Seminar</label>
                                             <div className="control">
-                                                <input   name='APseminar' onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                <input   name='tests.APseminar' onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                             </div>
                                         </div>
                                     </div>
@@ -350,31 +350,31 @@ class EditTest extends Component {
                                         <div className="field column is-two-fifths">
                                             <label className="label">Art History</label>
                                             <div className="control">
-                                                <input name='AParthistory'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                <input name='tests.AParthistory'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                             </div>
                                         </div>
                                         <div className="field column is-two-fifths">
                                             <label className="label">Studio Art 2-D</label>
                                             <div className="control">
-                                                <input name='APstudioart2d'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                <input name='tests.APstudioart2d'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                             </div>
                                         </div>
                                         <div className="field column is-two-fifths">
                                             <label className="label">Studio Art 3-D</label>
                                             <div className="control">
-                                                <input name='APstudioart3d'  onChange={this.onChange.bind(this)}  className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                <input name='tests.APstudioart3d'  onChange={this.onChange.bind(this)}  className="input" type="number" placeholder="Score" min="0" max="5"/>
                                             </div>
                                         </div>
                                         <div className="field column is-two-fifths">
                                             <label className="label">Studio Art Drawing</label>
                                             <div className="control">
-                                                <input name='APstudioartdrawing'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                <input name='tests.APstudioartdrawing'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                             </div>
                                         </div>
                                         <div className="field column is-two-fifths">
                                             <label className="label">Music</label>
                                             <div className="control">
-                                                <input name='APmusic'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                <input name='tests.APmusic'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                             </div>
                                         </div>
                                     </div>
@@ -386,13 +386,13 @@ class EditTest extends Component {
                                         <div className="field is-three-fifths column">
                                             <label className="label">English Language</label>
                                             <div className="control">
-                                                <input name='APenglishlang'   onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                <input name='tests.APenglishlang'   onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                             </div>
                                         </div>
                                         <div className="field column is-three-fifths">
                                             <label className="label">English Literature</label>
                                             <div className="control">
-                                                <input name='APenglishlit'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                <input name='tests.APenglishlit'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                             </div>
                                         </div>
                                     </div>
@@ -404,55 +404,55 @@ class EditTest extends Component {
                                         <div className="field column is-two-fifths">
                                                 <label className="label">Comparative Government</label>
                                                 <div className="control">
-                                                    <input name='APcomparativegov'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                    <input name='tests.APcomparativegov'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                                 </div>
                                             </div>
                                             <div className="field column is-two-fifths">
                                                 <label className="label">European History</label>
                                                 <div className="control">
-                                                    <input name='APeuro'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                    <input name='tests.APeuro'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                                 </div>
                                             </div>                       
                                             <div className="field column is-two-fifths">
                                                 <label className="label">Georgraphy</label>
                                                 <div className="control">
-                                                    <input name='APgeography'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                    <input name='tests.APgeography'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                                 </div>
                                             </div>
                                             <div className="field column is-two-fifths">
                                                 <label className="label">Macroeconomics</label>
                                                 <div className="control">
-                                                    <input name='APmacro'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                    <input name='tests.APmacro'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                                 </div>
                                             </div>                        
                                             <div className="field column is-two-fifths">
                                                 <label className="label">Microeconomics</label>
                                                 <div className="control">
-                                                    <input name='APmicro'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                    <input name='tests.APmicro'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                                 </div>
                                             </div>
                                             <div className="field column is-two-fifths">
                                                 <label className="label">Psychology</label>
                                                 <div className="control">
-                                                    <input name='APpsych'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                    <input name='tests.APpsych'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                                 </div>
                                             </div>                        
                                             <div className="field column is-two-fifths">
                                                 <label className="label">US Government</label>
                                                 <div className="control">
-                                                    <input name='APusgov'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                    <input name='tests.APusgov'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                                 </div>
                                             </div>
                                             <div className="field column is-two-fifths">
                                                 <label className="label">US History</label>
                                                 <div className="control">
-                                                    <input name='APushistory'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                    <input name='tests.APushistory'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                                 </div>
                                             </div>
                                             <div className="field column is-two-fifths">
                                                 <label className="label">World History</label>
                                                 <div className="control">
-                                                    <input name='APworldhistory'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                    <input name='tests.APworldhistory'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -464,31 +464,31 @@ class EditTest extends Component {
                                         <div className="field column is-two-fifths">
                                             <label className="label">Calculus AB</label>
                                             <div className="control">
-                                                <input name='APcalcAB'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                <input name='tests.APcalcAB'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                             </div>
                                         </div>
                                         <div className="field column is-two-fifths">
                                             <label className="label">Calculus BC</label>
                                             <div className="control">
-                                                <input name='APcalcBC'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                <input name='tests.APcalcBC'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                             </div>
                                         </div>
                                         <div className="field column is-two-fifths">
                                             <label className="label">Computer Science A</label>
                                             <div className="control">
-                                                <input name='APcompsciA'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                <input name='tests.APcompsciA'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                             </div>
                                         </div>
                                         <div className="field column is-two-fifths">
                                             <label className="label">Computer Science P</label>
                                             <div className="control">
-                                                <input name='APcompsciP'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                <input name='tests.APcompsciP'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                             </div>
                                         </div>
                                         <div className="field column is-two-fifths">
                                             <label className="label">Statistics</label>
                                             <div className="control">
-                                                <input name='APstat'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                <input name='tests.APstat'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                             </div>
                                         </div>
                                     </div>
@@ -500,43 +500,43 @@ class EditTest extends Component {
                                         <div className="field column is-two-fifths">
                                             <label className="label">Biology</label>
                                             <div className="control">
-                                                <input name='APbio'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                <input name='tests.APbio'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                             </div>
                                         </div>
                                         <div className="field column is-two-fifths">
                                             <label className="label">Chemistry</label>
                                             <div className="control">
-                                                <input name='APchem'  onChange={this.onChange.bind(this)}  className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                <input name='tests.APchem'  onChange={this.onChange.bind(this)}  className="input" type="number" placeholder="Score" min="0" max="5"/>
                                             </div>
                                         </div>
                                         <div className="field column is-two-fifths">
                                             <label className="label">Environmental Sciences</label>
                                             <div className="control">
-                                                <input name='APenvironment'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                <input name='tests.APenvironment'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                             </div>
                                         </div>
                                         <div className="field column is-two-fifths">
                                             <label className="label">Physics Electricity</label>
                                             <div className="control">
-                                                <input name='APphysicsElect'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                <input name='tests.APphysicsElect'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                             </div>
                                         </div>
                                         <div className="field column is-two-fifths">
                                             <label className="label">Physics Mechanical</label>
                                             <div className="control">
-                                                <input name='APphysicsMech'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                <input name='tests.APphysicsMech'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                             </div>
                                         </div>
                                         <div className="field column is-two-fifths">
                                             <label className="label">Physics 1</label>
                                             <div className="control">
-                                                <input name='APphysics1'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                <input name='tests.APphysics1'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                             </div>
                                         </div>
                                         <div className="field column is-two-fifths">
                                             <label className="label">Physics 2</label>
                                             <div className="control">
-                                                <input name='APphysics2'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                <input name='tests.APphysics2'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                             </div>
                                         </div>
                                     </div>
@@ -548,49 +548,49 @@ class EditTest extends Component {
                                         <div className="field column is-two-fifths">
                                             <label className="label">Chinese</label>
                                             <div className="control">
-                                                <input name='APchinese'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                <input name='tests.APchinese'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                             </div>
                                         </div>
                                         <div className="field column is-two-fifths">
                                             <label className="label">French</label>
                                             <div className="control">
-                                                <input name='APfrench'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                <input name='tests.APfrench'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                             </div>
                                         </div>
                                         <div className="field column is-two-fifths">
                                             <label className="label">German</label>
                                             <div className="control">
-                                                <input name='APgerman'  onChange={this.onChange.bind(this)}  className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                <input name='tests.APgerman'  onChange={this.onChange.bind(this)}  className="input" type="number" placeholder="Score" min="0" max="5"/>
                                             </div>
                                         </div>
                                         <div className="field column is-two-fifths">
                                             <label className="label">Italian</label>
                                             <div className="control">
-                                                <input name='APitalian'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                <input name='tests.APitalian'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                             </div>
                                         </div>
                                         <div className="field column is-two-fifths">
                                             <label className="label">Japanese</label>
                                             <div className="control">
-                                                <input name='APjapanese'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                <input name='tests.APjapanese'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                             </div>
                                         </div>
                                         <div className="field column is-two-fifths">
                                             <label className="label">Latin</label>
                                             <div className="control">
-                                                <input name='APlatin'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                <input name='tests.APlatin'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                             </div>
                                         </div>
                                         <div className="field column is-two-fifths">
                                             <label className="label">Spanish Language</label>
                                             <div className="control">
-                                                <input name='APspanishlang'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                <input name='tests.APspanishlang'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                             </div>
                                         </div>
                                         <div className="field column is-two-fifths">
                                             <label className="label">Spanish Language</label>
                                             <div className="control">
-                                                <input name='APspanishlit'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
+                                                <input name='tests.APspanishlit'  onChange={this.onChange.bind(this)} className="input" type="number" placeholder="Score" min="0" max="5"/>
                                             </div>
                                         </div>  
                                     </div>
@@ -610,8 +610,6 @@ class EditTest extends Component {
 
 
     render() {
-        const { test } = this.props;
-        console.log(test);
         return (
 
             <div className='container is-centered'>
@@ -624,7 +622,7 @@ class EditTest extends Component {
 
   EditTest.propTypes = {
       testEdit: PropTypes.func.isRequired,
-      getStudentTest: PropTypes.func.isRequired
+      getUserProfile: PropTypes.func.isRequired
   }
   
   export default EditTest;

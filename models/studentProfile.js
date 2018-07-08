@@ -2,6 +2,8 @@ var mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const StudentProfileSchema = new Schema({
+    type: { type: String, default: "profile"},
+
     _user: { type: Schema.Types.ObjectId, ref: 'User' },
     name: String,
     highSchool: String,
