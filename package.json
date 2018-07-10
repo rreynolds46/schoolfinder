@@ -5,7 +5,8 @@
   "scripts": {
     "start": "nodemon ./bin/www",
     "client": "npm run start --prefix schoolfinder",
-    "dev": "concurrently \"npm run start\" \"npm run client\""
+    "dev": "concurrently \"npm run start\" \"npm run client\"",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "dependencies": {
     "@types/react-redux": "^6.0.3",
